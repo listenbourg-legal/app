@@ -115,7 +115,7 @@ async function manageRepo(repo) {
                 const octokit = new Octokit({
                     auth: login.password // Utilisez un token si nécessaire
                 });
-                await octokit.request('POST /repos/listenbourg-legal/recueil-des-loi/actions/workflows/update-submodules.yml/dispatches', {
+                await octokit.request('POST /repos/monteloria/recueil-des-loi/actions/workflows/update-submodules.yml/dispatches', {
 
                     ref: 'main',
                     inputs: {
@@ -502,7 +502,7 @@ async function main() {
        
         
         await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
-        await manageRepo({ name: 'source', url: 'https://github.com/listenbourg-legal/source.git', path: './source' });
+        await manageRepo({ name: 'source', url: 'https://github.com/monteloria/source.git', path: './source' });
         await configureSafeDirectories()
         await extractModule("hexo");
         logger.log(typeof resolve)
@@ -573,7 +573,7 @@ async function checkForUpdates() {
         
         // Récupérer la dernière release depuis GitHub
         const { data: releases } = await octokit.repos.listReleases({
-            owner: 'listenbourg-legal',
+            owner: 'monteloria',
             repo: 'app'
         });
 
